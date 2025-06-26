@@ -18,9 +18,7 @@ import (
 	"github.com/go-resty/resty/v2"
 	jsoniter "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
-)
-
-// do others that not defined in Driver interface
+)// do others that not defined in Driver interface
 
 const (
 	Api              = "https://www.123pan.com/api"
@@ -163,7 +161,7 @@ func (d *Pan123) login() error {
 		SetHeaders(map[string]string{
 			"origin":      "https://www.123pan.com",
 			"referer":     "https://www.123pan.com/",
-			"user-agent":  "Dart/2.19(dart:io)-openlist",
+			"user-agent":  "Dart/2.19(dart:io)-alist",
 			"platform":    "web",
 			"app-version": "3",
 			//"user-agent":  base.UserAgent,
@@ -202,9 +200,10 @@ do:
 		"origin":        "https://www.123pan.com",
 		"referer":       "https://www.123pan.com/",
 		"authorization": "Bearer " + d.AccessToken,
-		"user-agent":    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) openlist-client",
-		"platform":      "web",
-		"app-version":   "3",
+		"user-agent":    "123pan/v2.5.4(Android_14.0.0;Xiaomi)",
+		"app-version": "77",
+		"platform": "android",
+		"x-app-version": "2.5.4",
 		//"user-agent":    base.UserAgent,
 	})
 	if callback != nil {
@@ -282,3 +281,4 @@ func (d *Pan123) getFiles(ctx context.Context, parentId string, name string) ([]
 	}
 	return res, nil
 }
+
